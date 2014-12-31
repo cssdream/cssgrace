@@ -1,0 +1,22 @@
+a:before, a:after {
+  content: "";
+  display: block;
+}
+
+.foo:first-line,
+.bar:first-letter {
+  font-size: 26px;
+}
+
+.foo:first-line,
+.bar:first-letter {
+  font-size: 26px;
+}
+
+a:before, .foo:first-line {
+  display: block;
+}
+
+h1 > a:before,       .foo:first-line {
+  display: block;
+}

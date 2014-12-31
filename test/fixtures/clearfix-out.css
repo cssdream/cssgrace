@@ -1,0 +1,22 @@
+.foo {
+  *zoom: 1;
+  display: block;
+}
+
+.foo:after {
+  clear: both;
+}
+
+.foo:before,
+.foo:after {
+  content: '';
+  display: table;
+}
+
+.foo {
+  position: absolute;
+}
+
+.foo {
+  overflow: auto;
+}

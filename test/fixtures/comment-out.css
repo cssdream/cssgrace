@@ -1,0 +1,36 @@
+/* comment */
+.foo {
+  /**/
+  position: absolute; /**/
+  left: 50%;
+  top: 50%;
+  margin-left: -150px;
+  margin-top: -100px;
+  /**/
+  width: 300px; /**/
+  height: 200px; /**/
+  /**/
+  *zoom: 1; /* clear */
+}
+.foo:after {
+  clear: both;
+}
+.foo:before,
+.foo:after {
+  content: '';
+  display: table;
+}
+
+/*ellipsis mixin*/
+.foo {
+  /**/
+  text-overflow: ellipsis; /**/
+  white-space: nowrap;
+  overflow: hidden;
+  /**/
+  background: rgba(136, 153, 136, 0.359); /**/
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#5b889988', endColorstr='#5b889988');
+}
+:root .foo {
+  filter: none\9;
+}

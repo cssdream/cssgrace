@@ -1,0 +1,14 @@
+.foo {
+  clear: fix;
+  display: block;
+}
+
+.foo {
+  clear: fix;
+  position: absolute;
+}
+
+.foo {
+  clear: fix;
+  overflow: auto;
+}

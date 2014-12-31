@@ -1,0 +1,18 @@
+/* comment */
+.foo {
+  /**/
+  position: center; /**/
+  /**/
+  width: 300px; /**/
+  height: 200px; /**/
+  /**/
+  clear: fix; /* clear */
+}
+
+/*ellipsis mixin*/
+.foo {
+  /**/
+  text-overflow: ellipsis; /**/
+  /**/
+  background: rgba(136, 153, 136, 0.359); /**/
+}

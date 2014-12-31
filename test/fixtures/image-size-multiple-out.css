@@ -1,0 +1,17 @@
+.foo {
+  background: url(./test/img/yuxifan@1x.jpg);
+  border-image: url(../image-width/image-height.png);
+  width: 320px;
+  height: 427px;
+  content: "  image-height  ";
+  -webkit-animation: 'image-width';
+
+  padding: calc( 320px / 427px + 30em);
+  margin: "  image-width ";
+  margin: 'image-width';
+  margin: "  image-height ";
+  margin: 'image-height';
+  margin: "40px image-width";
+  margin: 40px 320px 427px 320px 320px;
+  margin: "40px image-width image-height";
+}

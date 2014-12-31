@@ -1,0 +1,38 @@
+{
+  "name": "cssgrace",
+  "version": "1.0.0",
+  "description": "CSS postproccessor",
+  "main": "lib/index.js",
+  "author": {
+    "name": "yisi",
+    "email": "yiorsi@gmail.com",
+    "url": "http://iyunlu.com/view"
+  },
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "keywords": [
+    "css",
+    "css3",
+    "css polyfill",
+    "postcss",
+    "postcss-plugins",
+    "proccessor",
+    "postproccessor"
+  ],
+  "dependencies": {
+    "image-size": "^0.3.5"
+  },
+  "peerDependencies": {
+    "postcss": "^4.0.0"
+  },
+  "devDependencies": {
+    "postcss": "^4.0.0",
+    "tape": "^3.0.0"
+  },
+  "scripts": {
+    "test": "tape test"
+  }
+}

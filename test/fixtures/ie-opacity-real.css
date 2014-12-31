@@ -1,0 +1,9 @@
+.foo {
+  opacity: .6;
+  filter: alpha(opacity=60);
+}
+
+.foo {
+  opacity: 0.8293;
+  filter: alpha(opacity=83);
+}

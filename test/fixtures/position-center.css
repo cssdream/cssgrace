@@ -1,0 +1,14 @@
+.foo {
+  position: center;
+}
+
+.foo {
+  position: center;
+  width: 300px;
+}
+
+.foo {
+  position: center; /**/
+  width: 300px; /**/
+  height: 123px; /**/
+}

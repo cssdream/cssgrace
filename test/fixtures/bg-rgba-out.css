@@ -1,0 +1,21 @@
+.foo {
+  background: rgba(0, 0, 0, 0.6);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#99000000', endColorstr='#99000000');
+}
+
+:root .foo {
+  filter: none\9;
+}
+
+.bar {
+  background-color: rgba(12, 98, 211, .638);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#a20c62d3', endColorstr='#a20c62d3');
+}
+
+:root .bar {
+  filter: none\9;
+}
+
+.baz {
+  color: rgba(12, 98, 211, .638);
+}

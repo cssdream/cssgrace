@@ -1,0 +1,20 @@
+.foo {
+  position: absolute;
+  display: block;
+}
+
+.foo {
+  position: center;
+  display: block;
+}
+
+.foo {
+  float: left;
+  display: block;
+}
+
+.foo {
+  position: fixed;
+  display: block;
+  display: inline-block;
+}

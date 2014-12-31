@@ -1,0 +1,20 @@
+.foo {
+  resize: both;
+}
+
+.foo {
+  resize: horizontal;
+}
+
+.foo {
+  resize: vertical;
+}
+
+.foo {
+  resize: none;
+}
+
+.foo {
+  resize: both;
+  overflow: hidden;
+}

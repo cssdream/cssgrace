@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="UTF-8">
+  <title>CSS Grace 文档</title>
+  <link rel="stylesheet" href="http://demo.taobao.net/static/markdown.css">
+  <link rel="stylesheet" href="http://demo.taobao.net/static/highlightjs/default.css">
+  <script src="http://demo.taobao.net/static/highlightjs/highlight.pack.js"></script>
+  <script>
+  hljs.initHighlightingOnLoad();
+  </script>
+  <style>
+  body {
+    background-color: #F5F5F5;
+  }
+  img {
+    vertical-align: top;
+  }
+  .markdown-body {
+    overflow: visible;
+    max-width: 58em;
+    margin: 2em auto;
+    padding: 2em;
+    background-color: #fff;
+    border-radius: 2px;
+    box-shadow: 3px 3px 12px rgba(0, 0, 0, .15);
+  }
+  .markdown-body h1 {
+    margin-top: 16px;
+    margin-bottom: 32px;
+  }
+  .markdown-body blockquote {
+    margin-top: 30px;
+    font-size: 26px;
+  }
+  .markdown-body header {
+    position: relative;
+  }
+  .markdown-body header nav {
+    position: absolute;
+    right: 2em;
+    top: 2em;
+  }
+  .markdown-body figure {
+    margin: 32px 0 32px -600px;
+    position: relative;
+    left: 50%;
+    text-align: center;
+    max-width: 1200px;
+  }
+  </style>
+</head>
+
+<body>
+  <article class='markdown-body'>
+    <header>
+      <h1>CSS Grace</h1>
+      <nav><a href="http://gitlab.alibaba-inc.com/yisi/cssgrace/tree/master" target="_blank">返回仓库</a>
+      </nav>
+    </header>
+
+
+    <blockquote>
+      <p>
+        <strong>从今天起，写简单优雅面向未来的 CSS。</strong>
+      </p>
+    </blockquote>
+
+    <hr />
+
+    <p>CSS Grace 是一个由 Node.js 驱动，面向未来的 CSS 后处理工具，Sass/Less 能做的 CSS Grace 也能做，他们不能的，CSS Grace 也可以。最重要的是不改变 CSS 原生的语法，让 CSS 写起来更简单，更优雅。</p>
+
+    <figure>
+      <img src="http://gtms03.alicdn.com/tps/i3/TB1OXJaGpXXXXbbXFXXZ.oU0pXX-848-504.gif" alt="CSS Grace 动画演示">
+    </figure>
+
+
+    <h2>快速开始</h2>
+
+    <ol>
+      <li>
+        <p>下载并安装 <a href="http://nodejs.org/" target="_blank">Node.js</a>
+        </p>
+      </li>
+      <li>
+        <p>新建一个目录，比如 test ，在命令行中切换到该目录，安装 cssgrace。</p>
+
+        <pre><code>npm install cssgrace</code></pre>
+      </li>
+      <li>
+        <p>在 test 目录新增一个 test.js，代码如下：</p>
+
+        <pre><code>var fs = require("fs");
+var cssgrace = require('cssgrace');
+
+var css = fs.readFileSync('input.css', 'utf8');
+fs.writeFileSync('output.css', cssgrace.process(css).css);</code></pre>
+      </li>
+      <li>
+        <p>在 test 目录新增一个 input.css, 注意编码要和
+          <code>fs.readFileSync</code>中的保持一致。输入测试的CSS代码片段，比如：</p>
+
+        <pre><code class="css">.foo::after {
+  position: center;
+  width: 110px;
+  height: 23em;
+  background: rgba(0, 26, 0, .3);
+}
+</code></pre>
+      </li>
+      <li>
+        <p>在命令行中执行
+          <code>node test.js</code>，快去看看 output.css 中发生了什么吧！</p>
+      </li>
+    </ol>
+
+    <h2>功能</h2>
+
+    <h3>选择器优化</h3>
+
+    <ol>
+      <li>
+        <p>伪元素两个冒号替换为一个冒号</p>
+
+        <p>当存在：
+          <code>::before</code>,
+          <code>::after</code>,
+          <code>::first-line</code>,
+          <code>::first-letter</code>选择器时, 替换为一个冒号。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo::after {
+  position: absolute;
+}
+
+.bar::first-line {
+  color: #333;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo:after {
+  content: '';
+  position: absolute;
+}
+
+.bar:first-line {
+  color: #333;
+}
+</code></pre>
+      </li>
+      <li>
+        <p>
+          <code>::before</code>,
+          <code>::after</code>自动增加 content: '';</p>
+
+        <p>当伪元素选择器中有声明但没写 content，自动增加content: ''</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo:after {
+  position: absolute;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo:after {
+  content: '';
+  position: absolute;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h3>mixin</h3>
+
+    <ol>
+      <li>
+        <p>rgba 转换为滤镜</p>
+
+        <p>当 background 或 background-color 中颜色为 rgba() 时，自动生成IE filter。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  background: rgba(163, 55, 0, .3);
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.bar {
+  background: rgba(163, 55, 0, .3);
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#4ca33700', endColorstr='#4ca33700');
+}
+
+:root .bar {
+  filter: none\9;
+}
+</code></pre>
+
+        <p>由于 IE9 同时支持 rgba 和 filter，会导致两个颜色叠加，这里使用 :root hack 去掉 filter。</p>
+      </li>
+      <li>
+        <p>opacity 转换为滤镜</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  opacity: .6;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  opacity: 0.6;
+  filter: alpha(opacity=60);
+}
+</code></pre>
+
+        <p>如果是多位小数，filter 中的数值会四舍五入。</p>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  opacity: 0.6253;
+  filter: alpha(opacity=63);
+}
+</code></pre>
+      </li>
+      <li>
+        <p>inline-block</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  display: inline-block;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  display: inline-block;
+  *display: inline;
+  *zoom: 1;
+}
+</code></pre>
+      </li>
+      <li>
+        <p>text-overflow: ellipsis</p>
+
+        <p>ellipsis 只有在不换行以及 overflow: hidden 时才生效。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  text-overflow: ellipsis;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+</code></pre>
+      </li>
+      <li>
+        <p>resize</p>
+
+        <p>resize 只有在 overflow 不为 visible 时才生效</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  resize: horizontal;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  resize: horizontal;
+  overflow: auto;
+}
+</code></pre>
+      </li>
+      <li>
+        <p>clearfix 闭合浮动</p>
+
+        <p>以前我们在需要闭合浮动的元素上增加 class
+          <code>.clearfix</code>, 样式和结构存在耦合。</p>
+
+        <pre><code class="css">.clearfix:before,
+.clearfix:after {
+  content: "";
+  display: table;
+}
+
+.clearfix:after {
+  clear: both;
+}
+
+.clearfix {
+  *zoom: 1;
+}
+</code></pre>
+
+        <p>现在只需在CSS中使用
+          <code>clear: fix</code>即可。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  clear: fix;
+}
+.foo .bar {
+  float: left;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  *zoom: 1;
+}
+.foo:after {
+  clear: both
+}
+.foo:before,
+.foo:after {
+  content: "";
+  display: table
+}
+.foo .bar {
+  float: left;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h3>让浏览器支持暂未实现的 CSS3 新特性</h3>
+
+    <ol>
+      <li>
+        <p>绝对定位元素居中：position: center</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  position: center;
+  width: 110px;
+  height: 23em;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">.foo {
+  position: absolute;
+  width: 110px;
+  height: 23em;
+  margin-left: -55px;
+  margin-top: -11.5em;
+  top: 50%;
+  left: 50%;
+}
+</code></pre>
+
+        <p>CSS Grace 会自动计算 margin 中的值，麻麻再也不用担心我算术不好了。</p>
+      </li>
+    </ol>
+
+    <hr />
+
+    <h3>修复常见错误</h3>
+
+    <ol>
+      <li>
+        <p>浮动或绝对定位元素不用写 display: block;</p>
+
+        <p>当存在 float: left|right 或者 position: absolute|fixed 时，会自动删除多余的 display: block。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  position: absolute;
+  display: block;
+}
+
+span {
+  float: left;
+  display: block;
+}
+</code></pre>
+
+        <p>输入</p>
+
+        <pre><code class="css">.foo {
+  position: absolute;
+}
+
+span {
+  float: left;
+}
+</code></pre>
+      </li>
+      <li>
+        <p>-webkit-text-size-adjust: none 改为 100%</p>
+
+        <p>
+          <code>-webkit-text-size-adjust: none</code>会导致页面字号无法缩放，影响页面的可用性，尤其是在移动设备上。</p>
+
+        <p>输入</p>
+
+        <pre><code class="css">body {
+  -webkit-text-size-adjust: none;
+}
+</code></pre>
+
+        <p>输出</p>
+
+        <pre><code class="css">body {
+  -webkit-text-size-adjust: 100%;
+}
+</code></pre>
+      </li>
+    </ol>
+
+    <h2>面向未来的 CSS 工作流</h2>
+
+    <ol>
+      <li>使用 <a href="https://github.com/postcss/autoprefixer">Autoprefixer</a> 自动增加前缀，抛弃 Sass/Less 繁杂且不健全的前缀 mixin。</li>
+      <li>使用 PostCSS 的一系列CSS 未来语法插件支持 CSS 原生变量（<a href="https://github.com/postcss/postcss-custom-properties">postcss-custom-properties</a>）等。</li>
+      <li>使用 CSS Grace 自动优化代码，兼容低版本 IE。</li>
+      <li>使用 <a href="https://github.com/CSSLint">CSSLint</a> 检查 CSS 语法。</li>
+      <li>使用 <a href="https://github.com/jakubpawlowicz/clean-css">clean-css</a> 或 <a href="https://github.com/wangjeaf/ckstyle-node">CKStyle</a>压缩合并 CSS 文件。</li>
+    </ol>
+
+    <h2>致谢</h2>
+
+    <p>CSS Grace 基于 <a href="https://github.com/postcss/postcss">PostCSS</a>，感谢 Andrey Sitnik 开发了这么好的 CSS 解析器以及在本插件开发过程中给予帮助。</p>
+
+    <h2>Licence</h2>
+
+    <p>MIT</p>
+  </article>
+</body>
+
+</html>

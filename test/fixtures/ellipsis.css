@@ -1,0 +1,18 @@
+.foo {
+  text-overflow: ellipsis;
+}
+
+.foo {
+  text-overflow: clip;
+}
+
+.foo {
+  text-overflow: ellipsis;
+  overflow: auto;
+  white-space: normal;
+}
+
+.foo {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

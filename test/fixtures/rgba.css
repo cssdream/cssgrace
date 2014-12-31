@@ -1,0 +1,7 @@
+.foo {
+  background: rgba(153, 85, 102, 0.3);
+}
+
+.foo {
+  background: rgba(153, 85, 102, .9);
+}

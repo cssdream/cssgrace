@@ -1,0 +1,24 @@
+.foo {
+  position: absolute;
+  float: left;
+}
+
+.foo {
+  display: block;
+  float: left;
+}
+
+.foo {
+  display: flex;
+  float: left;
+}
+
+.foo {
+  display: table;
+  float: left;
+}
+
+.foo {
+  float: none;
+  display: block;
+}

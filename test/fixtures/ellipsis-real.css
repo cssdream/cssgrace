@@ -1,0 +1,21 @@
+.foo {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+.foo {
+  text-overflow: clip;
+}
+
+.foo {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.foo {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+}

@@ -1,0 +1,15 @@
+.foo {
+  position: absolute;
+}
+
+.foo {
+  position: center;
+}
+
+.foo {
+  float: left;
+}
+
+.foo {
+  position: fixed;
+}
