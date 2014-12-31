@@ -574,7 +574,7 @@ output:
 * 运行测试。
 
 ```
-$ git clone https://github.com/postcss/postcss-media-minmaxs.git
+$ git clone git@github.com:cssdream/cssgrace.git
 $ git checkout -b patch
 $ npm install
 $ npm test
