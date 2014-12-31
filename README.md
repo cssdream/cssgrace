@@ -577,6 +577,7 @@ $ git clone https://github.com/postcss/postcss-media-minmaxs.git
 $ git checkout -b patch
 $ npm install
 $ npm test
+```
 
 ## [Changelog](CHANGELOG.md)
 
