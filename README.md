@@ -135,9 +135,10 @@ output:
     .bar {
       display: inline-block;
       opacity: .5;
-    }  ```
+    }
+    ```
 
-5. 在命令行中执行 ```node test```，快去看看 output.css 中发生了什么吧！
+5. 在命令行中执行 `node test`，快去看看 output.css 中发生了什么吧！
 
     ```css
     .foo:after {
