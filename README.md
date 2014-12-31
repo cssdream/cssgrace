@@ -83,7 +83,6 @@ output:
 
 ```css
 .foo {
-  clear: fix;
   overflow: hidden; /* 已经可以闭合浮动了 */
 }
 ```
