@@ -1,6 +1,11 @@
 
 # CSS Grace
 
+[![Build Status](https://travis-ci.org/cssdream/cssgrace.svg?branch=master)](https://travis-ci.org/cssdream/cssgrace) 
+[![npm](https://img.shields.io/npm/dm/localeval.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![NPM version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![npm](https://img.shields.io/npm/l/express.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+
   >**从今天起，写简单优雅面向未来的 CSS。**
 
 --------------
