@@ -11,12 +11,14 @@ CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。�
 ![CSS Grace 动画演示](http://gtms03.alicdn.com/tps/i3/TB1OXJaGpXXXXbbXFXXZ.oU0pXX-848-504.gif)
 
 
-* 向前 CSS Grace 可以作为一种 Polyfill 工具，让你可以提前使用一些 CSS3 的新特性。
-* 向后 CSS Grace 可以实现各种旧浏览器的 Hack，让你无需担忧兼容性。
-* 而你只用书写和关心标准的 CSS 属性或属性值。
+* 向前，CSS Grace 可以作为一种 Polyfill 工具，让你可以提前使用一些 CSS3 的新特性。
+* 向后，CSS Grace 可以生成兼容旧浏览器的各种 Hack，让你无需担忧兼容性。
+* 而你，只用书写和关心标准的 CSS 属性或属性值。
+
+怎么样，可攻可受吧！
 
 
-例如，下面的语法糖用来解决闭合浮动的问题：
+例如，骚年们会经常用下面这段 CSS 用来解决闭合浮动的问题：
 
 ```css
 .clearfix {
@@ -34,7 +36,7 @@ CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。�
 
 这个语法糖虽然好用，兼容性良好，但在 HTML 中会出现非常多的 `class="clearfix"`。甚至有些地方已经闭合了浮动，有些人为了保险起见，还是随手加上了`class="clearfix"`。o(╯□╰)o
 
-如此一来代码显得尤为冗余，而且加了很多无语意的 class。更进一步，我们知道如果触发了 BFC 的元素是自带闭合浮动特性的，clearfix 君略感尴尬。
+如此一来代码显得尤为冗余，而且加了很多无语意的 class。更进一步，我们知道如果触发了 BFC 的元素是自带闭合浮动特性的，clearfix 君略感违和。
 
 Q: 那么，CSS Grace 如何解决呢？
 
@@ -83,12 +85,11 @@ output:
 
 ```css
 .foo {
-  clear: fix;
   overflow: hidden; /* 已经可以闭合浮动了 */
 }
 ```
 
-就是那么简单！
+就是那么任性！
 
 目前功能处于初步阶段，欢迎大家提出更多意见和想法。
 
@@ -103,7 +104,7 @@ output:
     npm install cssgrace
     ```
 
-3. 在 test 目录新增一个 test.js，代码如下：
+3. 在项目目录新增一个 test.js，代码如下：
 
     ```js
     var fs       = require('fs')
@@ -122,7 +123,7 @@ output:
       })
     ```
 
-4. 在 test 目录新增一个 input.css，注意编码要和 ```fs.readFileSync``` 中的保持一致。输入测试的CSS代码片段，比如：
+4. 在项目目录新增一个 input.css，注意编码要和 ```fs.readFileSync``` 中的保持一致。输入测试的 CSS 代码片段，比如：
 
     ```css
     .foo::after {
@@ -170,7 +171,7 @@ output:
 
 ## 如何使用
 
-###  Node Watch && 配合其他插件
+###  Node Watch & 配合其他插件
 
 使用 chokidar 模块实时监测 CSS 文件变动，同时可以加载其他插件，灵活扩展。
 
@@ -258,7 +259,7 @@ gulp.watch('src/*.css', ['default']);
 
 ### 自动生成 2x 背景图兼容代码
 
-只用使用标准的 image-set 属性即可。
+现代浏览器中，可以使用标准的 `image-set()` 函数，会自动生成一段 Media Queries 来兼容不支持 `image-set()` 的浏览器。
 
 input:
 
@@ -274,7 +275,7 @@ output:
 
 ```css
 .foo {
-  background-image: url(./test/img/yuxifan@1x.jpg);
+  background-image: url(./test/img/yuxifan@1x.jpg); /* Fallback */
   background-image: -webkit-image-set(
                     url(./test/img/yuxifan@1x.jpg) 1x,
                     url(./test/img/yuxifan@2x.jpg) 2x);
@@ -295,9 +296,9 @@ output:
 
 ### 获取背景图宽高
 
-使用 image-width 和 image-height 可以直接在其他属性中灵活使用图片的宽高。
+使用 `image-width` 和 `image-height` 获取图片的宽高。
 
-而且 url 和引号内的 image-width 和 image-height 不会被转换。
+**注意：** url 和引号内的 image-width 和 image-height 不会被转换。
 
 input:
 
@@ -363,7 +364,7 @@ output:
 
 #### 浮动或绝对定位元素不用写 display: block
 
-当存在 float: left|right 或者 position: absolute|fixed 时，会自动删除多余的 display: block/inline-block。
+当存在 float: left|right 或者 position: absolute|fixed 时，会自动删除多余的 display: block|inline-block。
 
 
 input:
@@ -403,7 +404,7 @@ output:
 
 #### 绝对定位元素浮动不生效
 
-存在 position: absolute|fixed 时，会自动删除多余的 float: left/right。
+存在 position: absolute|fixed 时，会自动删除多余的 float: left|right。
 
 input:
 
