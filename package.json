@@ -11,7 +11,7 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:cssdream/cssgrace.git"
   },
   "keywords": [
     "css",
