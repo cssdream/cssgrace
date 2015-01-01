@@ -1,6 +1,11 @@
 
 # CSS Grace
 
+[![Build Status](https://travis-ci.org/cssdream/cssgrace.svg?branch=master)](https://travis-ci.org/cssdream/cssgrace) 
+[![NPM Downloads](https://img.shields.io/npm/dm/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![NPM version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+
 > Better CSS writing
 
 ## Installation
