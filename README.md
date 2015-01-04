@@ -3,12 +3,14 @@
 
 [![Build Status](https://travis-ci.org/cssdream/cssgrace.svg?branch=master)](https://travis-ci.org/cssdream/cssgrace) 
 [![NPM Downloads](https://img.shields.io/npm/dm/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
-[![NPM version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
-[![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![NPM Version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](http://opensource.org/licenses/MIT) 
 
   >**从今天起，写简单优雅面向未来的 CSS。**
 
 --------------
+
+(English](README-en.md)
 
 CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。实现了大部分常用的 IE Hack，获取图片宽高等，position: center 等功能。同时可以配合 Sass/Less 等预处理工具使用，最重要的是它不改变 CSS 原生的语法，让 CSS 写起来更简单，更优雅。
 
@@ -18,7 +20,7 @@ CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。�
 
 * 向前，CSS Grace 可以作为一种 Polyfill 工具，让你可以提前使用一些 CSS3 的新特性。
 * 向后，CSS Grace 可以生成兼容旧浏览器的各种 Hack，让你无需担忧兼容性。
-* 而你，只用书写和关心标准的 CSS 属性或属性值。
+* 而你，只用书写和关心标准的 CSS 语法。
 
 怎么样，可攻可受吧！
 
@@ -105,9 +107,9 @@ output:
 
 2. 新建一个目录，比如 test ，在命令行中切换到该目录，安装 cssgrace。
 
-    ```
-    npm install cssgrace
-    ```
+```console
+npm install cssgrace
+```
 
 3. 在项目目录新增一个 test.js，代码如下：
 
@@ -214,6 +216,10 @@ chokidar.watch(src, {
 
 ### Grunt
 
+```
+npm install grunt-postcss
+```
+
 ```js
 module.exports = function(grunt) {
   grunt.initConfig({
@@ -240,6 +246,10 @@ module.exports = function(grunt) {
 ```
 
 ### Gulp
+
+```
+npm install gulp-postcss
+```
 
 ```js
 var gulp = require('gulp');
@@ -498,7 +508,7 @@ output:
 
 #### IE opacity
 
-自动生成 filter。
+自动生成 IE opacity filter。
 
 input:
 
@@ -528,7 +538,9 @@ output:
 
 #### IE RGBA
 
-自动生成 filter。
+自动生成 IE RGBA filter。
+
+> 由于 IE9 同时支持 filter 和 rgba，会导致颜色叠加，使用 IE9 + 支持的 `:root` 选择器去掉 IE9 中的 filter。
 
 input:
 
@@ -578,7 +590,7 @@ output:
 * 在[test](test)目录添加测试用例。
 * 运行测试。
 
-```
+```console
 $ git clone git@github.com:cssdream/cssgrace.git
 $ git checkout -b patch
 $ npm install

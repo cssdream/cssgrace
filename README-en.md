@@ -3,14 +3,20 @@
 
 [![Build Status](https://travis-ci.org/cssdream/cssgrace.svg?branch=master)](https://travis-ci.org/cssdream/cssgrace) 
 [![NPM Downloads](https://img.shields.io/npm/dm/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
-[![NPM version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
-[![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![NPM Version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
+[![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](http://opensource.org/licenses/MIT) 
 
 > Better CSS writing
 
-## Installation
+------
 
-    $ npm install cssgrace
+(简体中文](README.md)
+
+## Installation
+  
+```console
+npm install cssgrace
+```  
 
 ## Quick Start
 
@@ -72,7 +78,7 @@ Refer to the [test](test) directory
 * Add test cases in the [test](test) directory.
 * Run the test cases.
 
-```
+```console
 $ git clone git@github.com:yisibl/cssgrace.git
 $ git checkout -b patch
 $ npm install
