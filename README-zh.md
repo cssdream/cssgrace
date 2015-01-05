@@ -6,32 +6,114 @@
 [![NPM Version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
 [![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](http://opensource.org/licenses/MIT) 
 
-  >**From now on,writing brief,elegant,future-oriented CSS.**
+  >**从今天起，写简单优雅面向未来的 CSS。**
 
 --------------
 
-[简体中文](README-zh.md)
+[English](README-en.md)
 
-CSS Grace is a plugin for PostCSS.It does not change the original grammar CSS, let CSS to write more simple and more elegant。
+CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。实现了大部分常用的 IE Hack，获取图片宽高等，position: center 等功能。同时可以配合 Sass/Less 等预处理工具使用，最重要的是它不改变 CSS 原生的语法，让 CSS 写起来更简单，更优雅。
 
 
-![CSS Grace Gif Demo](http://gtms03.alicdn.com/tps/i3/TB1OXJaGpXXXXbbXFXXZ.oU0pXX-848-504.gif)
+![CSS Grace 动画演示](http://gtms03.alicdn.com/tps/i3/TB1OXJaGpXXXXbbXFXXZ.oU0pXX-848-504.gif)
 
+
+* 向前，CSS Grace 可以作为一种 Polyfill 工具，让你可以提前使用一些 CSS3 的新特性。
+* 向后，CSS Grace 可以生成兼容旧浏览器的各种 Hack，让你无需担忧兼容性。
+* 而你，只用书写和关心标准的 CSS 语法。
+
+怎么样，可攻可受吧！
 
 ![post and pre](test/img/post-and-pre.png)
 
 
-## Quick start
+例如，骚年们会经常用下面这段 CSS 用来解决闭合浮动的问题：
 
-1. Download and install Node.js.
+```css
+.clearfix {
+  *zoom: 1;
+}
+.clearfix:after {
+  clear: both;
+}
+.clearfix:before,
+.clearfix:after {
+  content: '';
+  display: table;
+}
+```
 
-2. Installation cssgrace.
+这个语法糖虽然好用，兼容性良好，但在 HTML 中会出现非常多的 `class="clearfix"`。甚至有些地方已经闭合了浮动，有些人为了保险起见，还是随手加上了`class="clearfix"`。o(╯□╰)o
+
+如此一来代码显得尤为冗余，而且加了很多无语意的 class。更进一步，我们知道如果触发了 BFC 的元素是自带闭合浮动特性的，clearfix 君略感违和。
+
+Q: 那么，CSS Grace 如何解决呢？
+
+> A: 直接使用 `clear: fix` 即可。
+
+input:
+
+```css
+.foo {
+  clear: fix;
+}
+```
+
+output:
+
+```css
+.foo {
+  *zoom: 1;
+}
+.foo:after {
+  clear: both;
+}
+.foo:before,
+.foo:after {
+  content: '';
+  display: table;
+}
+```
+
+Q: 那么，如何解决冗余问题呢？
+
+> A: 还是直接使用 `clear: fix` 即可，\(^o^)/~
+
+智能识别，如果存在触发 BFC 的属性，不生成语法糖。
+
+input:
+
+```css
+.foo {
+  clear: fix;
+  overflow: hidden; /* 已经可以闭合浮动了 */
+}
+```
+
+output:
+
+```css
+.foo {
+  overflow: hidden; /* 已经可以闭合浮动了 */
+}
+```
+
+就是那么任性！
+
+目前功能处于初步阶段，欢迎大家提出更多意见和想法。
+
+
+## 快速开始
+
+1. 下载并安装 Node.js
+
+2. 新建一个目录，比如 test ，在命令行中切换到该目录，安装 cssgrace。
 
 ```console
 npm install cssgrace
 ```
 
-3. test.js
+3. 在项目目录新增一个 test.js，代码如下：
 
 ```console
 npm install chokidar
@@ -54,7 +136,7 @@ chokidar.watch(src, {
   })
 ```
 
-4. input.css：
+4. 在项目目录新增一个 input.css，注意编码要和 ```fs.readFileSync``` 中的保持一致。输入测试的 CSS 代码片段，比如：
 
 ```css
 .foo::after {
@@ -70,7 +152,7 @@ chokidar.watch(src, {
 }
 ```
 
-5. `node test`，we will get `output.css`.
+5. 在命令行中执行 `node test`，快去看看 output.css 中发生了什么吧！
 
 ```css
 .foo:after {
@@ -100,10 +182,11 @@ chokidar.watch(src, {
 
 -------------
 
-## How to use
+## 如何使用
 
-###  Node watch & With the other plugins
+###  Node Watch & 配合其他插件
 
+使用 chokidar 模块实时监测 CSS 文件变动，同时可以加载其他插件，灵活扩展。
 
 ```js
 var fs       = require('fs')
@@ -193,10 +276,11 @@ gulp.task('default', function () {
 gulp.watch('src/*.css', ['default']);
 ```
 
-## More features
+## 更多功能
 
-### Automatic generation of 2x background compatible code
+### 自动生成 2x 背景图兼容代码
 
+现代浏览器中，可以使用标准的 `image-set()` 函数，会自动生成一段 Media Queries 来兼容不支持 `image-set()` 的浏览器。
 
 input:
 
@@ -231,10 +315,11 @@ output:
 }
 ```
 
-### Get the background image's width or height
+### 获取背景图宽高
 
-Using the `image-width` and `image-height` to obtain the image's width or height.
+使用 `image-width` 和 `image-height` 获取图片的宽高。
 
+**注意：** url 和引号内的 image-width 和 image-height 不会被转换。
 
 input:
 
@@ -268,57 +353,9 @@ output:
 }
 ```
 
+### position:center
 
-### clear: fix
-
-input:
-
-```css
-.foo {
-  clear: fix;
-}
-```
-
-output:
-
-```css
-.foo {
-  *zoom: 1;
-}
-.foo:after {
-  clear: both;
-}
-.foo:before,
-.foo:after {
-  content: '';
-  display: table;
-}
-```
-
-If there is already can remove floating property, don't generate compatible code.
-
-input:
-
-```css
-.foo {
-  clear: fix;
-  overflow: hidden;
-}
-```
-
-output:
-
-```css
-.foo {
-  overflow: hidden;
-}
-```
-
-
-
-### position:center polyfill
-
-Automatic calculation of margin value, the mother will never have to worry about my math is not good.
+已知宽高元素居中，自动计算 margin 取值，麻麻再也不用担心我数学不好了。
 
 input:
 
@@ -344,9 +381,11 @@ output:
 }
 ```
 
-### Repair of common errors
+### 修复常见错误
 
-#### Float or absolutely positioned elements don't write display: block
+#### 浮动或绝对定位元素不用写 display: block
+
+当存在 float: left|right 或者 position: absolute|fixed 时，会自动删除多余的 display: block|inline-block。
 
 
 input:
@@ -384,9 +423,9 @@ output:
 }
 ```
 
-#### Absolutely positioned elements floating effect
+#### 绝对定位元素浮动不生效
 
-Remove float: left|right.
+存在 position: absolute|fixed 时，会自动删除多余的 float: left|right。
 
 input:
 
@@ -405,9 +444,11 @@ output:
 }
 ```
 
-### Missing property auto completion
+### 自动补全漏写属性
 
-#### resize
+#### 自动修复 resize
+
+resize 生效 overflow 必须不是默认的 visible。
 
 input:
 
@@ -436,7 +477,7 @@ output:
 }
 ```
 
-#### text-overflow: ellipsis
+#### 自动修复 text-overflow: ellipsis
 
 input:
 
@@ -473,6 +514,7 @@ output:
 
 #### IE opacity
 
+自动生成 IE opacity filter。
 
 input:
 
@@ -501,6 +543,10 @@ output:
 ```
 
 #### IE RGBA
+
+自动生成 IE RGBA filter。
+
+> 由于 IE9 同时支持 filter 和 rgba，会导致颜色叠加，使用 IE9 + 支持的 `:root` 选择器去掉 IE9 中的 filter。
 
 input:
 
@@ -543,15 +589,15 @@ output:
 }
 ```
 
-## Contributing
+## 贡献
 
-* Install all the dependent modules.
-* Respect the coding style (Use [EditorConfig](http://editorconfig.org/)).
-* Add test cases in the [test](test) directory.
-* Run the test cases.
+* 安装相关的依赖模块。
+* 尊重编码风格（安装 [EditorConfig](http://editorconfig.org/)）。
+* 在[test](test)目录添加测试用例。
+* 运行测试。
 
-```
-$ git clone https://github.com/postcss/postcss-media-minmaxs.git
+```console
+$ git clone git@github.com:cssdream/cssgrace.git
 $ git checkout -b patch
 $ npm install
 $ npm test
