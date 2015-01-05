@@ -1,5 +1,5 @@
 .foo {
-  background: url(./test/img/yuxifan@1x.jpg);
+  background: url(../img/yuxifan@1x.jpg);
   border-image: url(../image-width/image-height.png);
   width: 320px;
   height: 427px;

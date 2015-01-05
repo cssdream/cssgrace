@@ -1,11 +1,11 @@
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   width: image-width;
   height: image-height;
 }
 
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   margin: image-width image-height -image-height;
   content: 'image-width';
 }
