@@ -10,7 +10,7 @@
 
 --------------
 
-[English](README-en.md)
+[English](README.md)
 
 CSS Grace 是一个由 PostCSS 驱动，面向未来的 CSS 后处理工具。实现了大部分常用的 IE Hack，获取图片宽高等，position: center 等功能。同时可以配合 Sass/Less 等预处理工具使用，最重要的是它不改变 CSS 原生的语法，让 CSS 写起来更简单，更优雅。
 
