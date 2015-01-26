@@ -5,3 +5,13 @@
 .foo {
   opacity: 0.8293;
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}

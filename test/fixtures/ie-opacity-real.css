@@ -7,3 +7,15 @@
   opacity: 0.8293;
   filter: alpha(opacity=83);
 }
+
+@keyframes fadein {
+  from {
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+
+  to {
+    opacity: 1;
+    filter: alpha(opacity=100);
+  }
+}
