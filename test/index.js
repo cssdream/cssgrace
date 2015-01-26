@@ -84,4 +84,9 @@ test('image-size-multiple', function(t) {
   t.end()
 })
 
+test('base64-image-size', function (t) {
+  compareFixtures(t, 'base64-image-size', 'Should be transform')
+  t.end();
+});
+
 
