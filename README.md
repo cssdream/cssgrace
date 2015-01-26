@@ -203,8 +203,8 @@ input:
 ```css
 .foo {
   background-image: -webkit-image-set(
-                    url(./test/img/yuxifan@1x.jpg) 1x,
-                    url(./test/img/yuxifan@2x.jpg) 2x);
+                    url(../img/yuxifan@1x.jpg) 1x,
+                    url(../img/yuxifan@2x.jpg) 2x);
 }
 ```
 
@@ -212,10 +212,10 @@ output:
 
 ```css
 .foo {
-  background-image: url(./test/img/yuxifan@1x.jpg); /* Fallback */
+  background-image: url(../img/yuxifan@1x.jpg); /* Fallback */
   background-image: -webkit-image-set(
-                    url(./test/img/yuxifan@1x.jpg) 1x,
-                    url(./test/img/yuxifan@2x.jpg) 2x);
+                    url(../img/yuxifan@1x.jpg) 1x,
+                    url(../img/yuxifan@2x.jpg) 2x);
 }
 @media 
   only screen and (-o-min-device-pixel-ratio: 2/1),
@@ -225,7 +225,7 @@ output:
   only screen and (min-resolution: 192dpi),
   only screen and (min-resolution: 2dppx) {
   .foo {
-    background-image: url(./test/img/yuxifan@2x.jpg);
+    background-image: url(../img/yuxifan@2x.jpg);
     background-size: 320px 427px;
 }
 }
@@ -240,13 +240,13 @@ input:
 
 ```css
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   width: image-width;
   height: image-height;
 }
 
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   margin: image-width image-height -image-height;
   content: 'image-width';
 }
@@ -256,13 +256,13 @@ output:
 
 ```css
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   width: 720px;
   height: 719px;
 }
 
 .foo {
-  background: url(./test/img/post-and-pre.png);
+  background: url(../img/post-and-pre.png);
   margin: 720px 719px -719px;
   content: 'image-width';
 }
