@@ -89,4 +89,9 @@ test('base64-image-size', function (t) {
   t.end();
 });
 
+test('hash', function (t) {
+  compareFixtures(t, 'hash', 'Should be remove hash')
+  t.end();
+})
+
 
