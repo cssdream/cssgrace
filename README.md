@@ -506,7 +506,7 @@ input:
 
 ```css
 .foo {
-  background: rgba(153, 85, 102, 0.3);margin
+  background: rgba(153, 85, 102, 0.3);
 }
 ```
 
