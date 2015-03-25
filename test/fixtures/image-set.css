@@ -5,3 +5,11 @@
   width: image-width;
   height: image-height;
 }
+
+.bar {
+  background: #999 -webkit-image-set(
+                    url(../img/yuxifan@1x.jpg) 1x,
+                    url(../img/yuxifan@2x.jpg) 2x) bottom 100% / cover padding-box content-box;
+  width: image-width;
+  height: image-height;
+}
