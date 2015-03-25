@@ -1,10 +1,3 @@
-@media only screen and (min-resolution: 2dppx) {
-  .foo {
-    background-image: url(../img/yuxifan@2x.jpg);
-    background-size: 320px 427px;
-}
-}
-
 .foo {
   background-image: url(../img/yuxifan@1x.jpg);
   background-image: -webkit-image-set(
@@ -13,9 +6,8 @@
   width: 320px;
   height: 427px;
 }
-
 @media only screen and (min-resolution: 2dppx) {
-  .bar {
+  .foo {
     background-image: url(../img/yuxifan@2x.jpg);
     background-size: 320px 427px;
 }
@@ -28,4 +20,11 @@
                     url(../img/yuxifan@2x.jpg) 2x) bottom 100% / cover padding-box content-box;
   width: 320px;
   height: 427px;
+}
+
+@media only screen and (min-resolution: 2dppx) {
+  .bar {
+    background-image: url(../img/yuxifan@2x.jpg);
+    background-size: 320px 427px;
+}
 }
