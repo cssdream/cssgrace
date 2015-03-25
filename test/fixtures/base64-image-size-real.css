@@ -13,7 +13,7 @@
   height: 18px;
 }
 
-@media only screen and (min-resolution: 2dppx) {
+@media only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .bar {
     background-image: url(../img/yuxifan@2x.jpg);
     background-size: 320px 427px;

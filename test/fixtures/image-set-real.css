@@ -6,7 +6,7 @@
   width: 320px;
   height: 427px;
 }
-@media only screen and (min-resolution: 2dppx) {
+@media only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .foo {
     background-image: url(../img/yuxifan@2x.jpg);
     background-size: 320px 427px;
@@ -22,7 +22,7 @@
   height: 427px;
 }
 
-@media only screen and (min-resolution: 2dppx) {
+@media only screen and (min-resolution: 192dpi), only screen and (min-resolution: 2dppx) {
   .bar {
     background-image: url(../img/yuxifan@2x.jpg);
     background-size: 320px 427px;
