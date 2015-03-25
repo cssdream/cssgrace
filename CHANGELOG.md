@@ -1,5 +1,9 @@
 # CSS Grace
 
+## V 2.0.2 (2015-03-25)
+
+\* Fix the image-set() does not support background shorthand.
+
 ## V 2.0.1 (2015-03-23)
 
 \* Fix the problem which is unable to obtain the size of image when the `?` in URL. e.g. `background: url(../images/font/blue.png?__sprite)`
