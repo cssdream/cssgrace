@@ -23,13 +23,10 @@
     "postproccessor"
   ],
   "dependencies": {
+    "postcss": "^5.0.0",
     "image-size": "^0.3.5"
   },
-  "peerDependencies": {
-    "postcss": "^4.0.0"
-  },
   "devDependencies": {
-    "postcss": "^4.0.0",
     "tape": "^3.0.0"
   },
   "scripts": {
