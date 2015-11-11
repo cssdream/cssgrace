@@ -1,8 +1,7 @@
-
 # CSS Grace
 
-[![Build Status](https://travis-ci.org/cssdream/cssgrace.svg?branch=master)](https://travis-ci.org/cssdream/cssgrace) 
-[![Build status](https://ci.appveyor.com/api/projects/status/github/cssdream/cssgrace?branch=master&svg=true)](https://ci.appveyor.com/project/yisibl/cssgrace/branch/master) 
+[![Build Status](https://img.shields.io/travis/cssdream/cssgrace/master.svg?label=Unix%20build)](https://travis-ci.org/cssdream/cssgrace) 
+[![Windows Build status](https://img.shields.io/appveyor/ci/yisibl/cssgrace/master.svg?label=Windows%20build)](https://ci.appveyor.com/project/yisibl/cssgrace/branch/master) 
 [![NPM Downloads](https://img.shields.io/npm/dm/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
 [![NPM Version](http://img.shields.io/npm/v/cssgrace.svg?style=flat)](https://www.npmjs.com/package/cssgrace) 
 [![License](https://img.shields.io/npm/l/cssgrace.svg?style=flat)](http://opensource.org/licenses/MIT) 
