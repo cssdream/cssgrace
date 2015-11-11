@@ -1,4 +1,5 @@
 # AppVeyor file
+# http://www.appveyor.com/docs/lang/nodejs-iojs
 # http://www.appveyor.com/docs/appveyor-yml
 
 version: "{build}"
@@ -10,16 +11,22 @@ environment:
     - nodejs_version: 0.12
     - nodejs_version: 4
 
+# Install scripts. (runs after repo cloning)
 install:
+  # Get the latest stable version of Node.js or io.js
   - ps: Install-Product node $env:nodejs_version
+  # install modules
   - npm install
 
-build: off
-
+# Post-install test scripts.
 test_script:
   # Output useful info for debugging.
   - node --version && npm --version
-  - cmd: npm test
+  # run tests
+  - npm test
+
+# Don't actually build.
+build: off
 
 matrix:
   fast_finish: true
