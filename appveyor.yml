@@ -1,6 +1,10 @@
 # AppVeyor file
 # http://www.appveyor.com/docs/appveyor-yml
 
+version: "{build}"
+
+clone_depth: 10
+
 environment:
   matrix:
     - nodejs_version: 0.12
@@ -20,6 +24,6 @@ matrix:
   fast_finish: true
 
 cache:
-  - C:\Users\appveyor\AppData\Roaming\npm\node_modules -> package.json # global npm modules
-  - %APPDATA%\npm-cache -> package.json # npm cache
-  - node_modules -> package.json # local npm modules
+  - C:\Users\appveyor\AppData\Roaming\npm\node_modules -> package.json  # global npm modules
+  - C:\Users\appveyor\AppData\Roaming\npm-cache -> package.json         # npm cache
+  - node_modules -> package.json                                        # local npm modules
