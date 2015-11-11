@@ -23,7 +23,7 @@
     "postproccessor"
   ],
   "dependencies": {
-    "postcss": "^5.0.0",
+    "postcss": "^5.0.11",
     "image-size": "^0.3.5"
   },
   "devDependencies": {
