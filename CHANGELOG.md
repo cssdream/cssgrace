@@ -2,9 +2,9 @@
 
 ## V 3.0.0 (2015-11-11) :dog::dog::dog:
 
-\+ Use PostCSS 5.0 API #39 (Thanks @yuezk).
-\+ Add Appveyor build test.
-\* Fix image relative path error #38.
+* \+ Use PostCSS 5.0 API #39 (Thanks @yuezk).
+* \+ Add Appveyor build test.
+* \* Fix image relative path error #38.
 
 
 ## V 2.0.2 (2015-03-25)
