@@ -1,3 +1,60 @@
 .foo {
+  /* 需要直接hack */
+  display: inline-block;
+}
+.foo {
+  /* 只需要hack display */
+  display: inline-block;
+  *zoom: 1;
+}
+.foo {
+  /* 源代码的display hack的位置不对，需要重新hack display */
+  display: inline;
+  display: inline-block;
+}
+.foo {
+  /* 源代码的display hack的位置不对，需要重新hack display */
+  *display: inline;
+  display: inline-block;
+}
+.foo {
+  /* 已有*display: inline，只需要hack zoom */
+  display: inline-block;
+  *display: inline;
+}
+.foo {
+  /* 源码已有zoom: 0.99，不要覆盖掉zoom */
+  zoom: 0.99;
+  display: inline-block;
+}
+.foo {
+  /* 源码已有zoom: 99.9%，不要覆盖掉zoom */
+  zoom: 99.9%;
+  display: inline-block;
+}
+.foo {
+  /* 源码已有zoom，但是取值不对，也需要hack */
+  zoom: 0.0.1;
+  display: inline-block;
+}
+.foo {
+  /* 源码已有zoom，但是取值不对，也需要hack */
+  zoom: normal;
+  display: inline-block;
+}
+.foo {
+  /* 源码已将display覆盖为inline，无需hack */
+  display: inline-block;
+  display: inline;
+}
+.foo {
+  /* display: inline-block;写了两遍，只处理最后一个 */
+  display: inline-block;
+  display: inline-block;
+}
+.foo {
+  /* display: inline-block;写了两遍，只处理最后一个，且不需要写zoom */
+  display: inline-block;
+  zoom: 0.99;
   display: inline-block;
 }
